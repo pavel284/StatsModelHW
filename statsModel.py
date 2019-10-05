@@ -60,3 +60,16 @@ predictions = model.predict(X) # make the predictions by the model
 
 #prints the sumary data of the prediction model 
 model.summary()
+
+#adding a constant
+X = df["RM"] ## X usually means our input variables (or independent variables)
+y = target["MEDV"] ## Y usually means our output/dependent variable
+X = sm.add_constant(X) ## let's add an intercept (beta_0) to our model
+
+# Note the difference in argument order
+model = sm.OLS(y, X).fit() ## sm.OLS(output, input)
+predictions = model.predict(X)
+
+# Print out the statistics
+model.summary()
+
